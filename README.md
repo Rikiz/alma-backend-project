@@ -42,13 +42,11 @@ git clone https://github.com/Rikiz/alma-backend-project.git
 cd fastapi-leads
 ```
 
-### 2. Create virtual environment
+### 2. Create conda environment
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-# or
-.venv\Scripts\activate     # Windows
+conda create -n fastapi-leads python=3.8
+conda activate fastapi-leads
 ```
 
 ### 3. Install dependencies
