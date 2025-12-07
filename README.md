@@ -5,70 +5,70 @@
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0+-red.svg)](https://www.sqlalchemy.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-一个基于FastAPI开发的现代化Leads（潜在客户）管理系统，支持简历文件上传、邮件通知和状态跟踪。采用异步架构，专为高性能和高并发场景设计。
+A modern leads (prospects) management system built with FastAPI, supporting resume file uploads, email notifications, and status tracking. Designed with asynchronous architecture for high performance and high concurrency scenarios.
 
-## ✨ 特性
+## ✨ Features
 
-- 🚀 **高性能异步API** - 基于FastAPI和asyncio，支持高并发请求
-- 📁 **文件上传支持** - 安全处理简历PDF文件上传和存储
-- 📧 **智能邮件通知** - 自动发送确认邮件和内部通知
-- 🗄️ **灵活数据存储** - 支持SQLite和PostgreSQL等数据库
-- 🔒 **安全设计** - 内置输入验证和错误处理
-- 📊 **状态管理** - 完整的lead状态跟踪系统
-- 🏗️ **模块化架构** - 清晰的分层设计，便于维护和扩展
-- 🛠️ **开发友好** - 自动API文档生成和热重载支持
+- 🚀 **High-performance Async API** - Built with FastAPI and asyncio, supporting high-concurrent requests
+- 📁 **File Upload Support** - Secure handling of PDF resume file uploads and storage
+- 📧 **Smart Email Notifications** - Automatic confirmation emails and internal notifications
+- 🗄️ **Flexible Data Storage** - Support for SQLite and PostgreSQL databases
+- 🔒 **Secure Design** - Built-in input validation and error handling
+- 📊 **Status Management** - Complete lead status tracking system
+- 🏗️ **Modular Architecture** - Clean layered design for easy maintenance and extension
+- 🛠️ **Developer Friendly** - Auto-generated API documentation and hot reload support
 
-## 🏗️ 技术栈
+## 🏗️ Tech Stack
 
-- **框架**: FastAPI - 现代异步Web框架
-- **数据库ORM**: SQLAlchemy 2.0 - 强大的数据库抽象层
-- **数据验证**: Pydantic - 数据模型和验证
-- **异步文件处理**: aiofiles - 异步文件操作
-- **邮件服务**: aiosmtplib - 异步SMTP客户端
-- **服务器**: Uvicorn - ASGI服务器
-- **配置管理**: Pydantic Settings - 环境变量管理
+- **Framework**: FastAPI - Modern asynchronous web framework
+- **Database ORM**: SQLAlchemy 2.0 - Powerful database abstraction layer
+- **Data Validation**: Pydantic - Data models and validation
+- **Async File Handling**: aiofiles - Asynchronous file operations
+- **Email Service**: aiosmtplib - Asynchronous SMTP client
+- **Server**: Uvicorn - ASGI server
+- **Configuration Management**: Pydantic Settings - Environment variable management
 
-## 📋 系统要求
+## 📋 System Requirements
 
 - Python 3.8+
-- SQLite 3.0+ (默认) 或 PostgreSQL (可选)
+- SQLite 3.0+ (default) or PostgreSQL (optional)
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 1. 克隆项目
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/Rikiz/alma-backend-project.git
 cd fastapi-leads
 ```
 
-### 2. 创建虚拟环境
+### 2. Create virtual environment
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # Linux/Mac
-# 或
+# or
 .venv\Scripts\activate     # Windows
 ```
 
-### 3. 安装依赖
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. 配置环境变量 (可选)
+### 4. Configure environment variables (optional)
 
-创建 `.env` 文件：
+Create `.env` file:
 
 ```env
-# 数据库配置
+# Database configuration
 DATABASE_URL=sqlite:///leads.db
 
-# 文件上传配置
+# File upload configuration
 UPLOAD_DIR=./uploads
 
-# SMTP邮件配置 (可选)
+# SMTP email configuration (optional)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
@@ -76,40 +76,40 @@ SMTP_PASSWORD=your-app-password
 FROM_EMAIL=noreply@yourdomain.com
 ATTORNEY_EMAIL=attorney@yourdomain.com
 
-# 日志配置
+# Logging configuration
 LOG_LEVEL=INFO
 ```
 
-### 5. 启动服务
+### 5. Start the service
 
 ```bash
-# 开发模式 (带热重载)
+# Development mode (with hot reload)
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
-# 或使用便捷脚本
+# Or use the convenience script
 ./run.sh
 ```
 
-访问 http://localhost:8000/docs 查看自动生成的API文档。
+Visit http://localhost:8000/docs to view the auto-generated API documentation.
 
-## 📚 API 文档
+## 📚 API Documentation
 
-### 健康检查
+### Health Check
 
-- **GET** `/health` - 服务健康检查
+- **GET** `/health` - Service health check
 
-### 公开接口 (Public APIs)
+### Public APIs
 
-#### 创建Lead
+#### Create Lead
 - **POST** `/public/create_leads`
-- **描述**: 提交新的潜在客户信息
-- **请求体**: `multipart/form-data`
-  - `first_name` (string, required): 名
-  - `last_name` (string, required): 姓
-  - `email` (string, required): 邮箱地址
-  - `resume` (file, optional): 简历文件 (PDF)
+- **Description**: Submit new prospect information
+- **Request Body**: `multipart/form-data`
+  - `first_name` (string, required): First name
+  - `last_name` (string, required): Last name
+  - `email` (string, required): Email address
+  - `resume` (file, optional): Resume file (PDF)
 
-**cURL 示例**:
+**cURL Example**:
 ```bash
 curl -X POST "http://localhost:8000/public/create_leads" \
   -F "first_name=John" \
@@ -118,7 +118,7 @@ curl -X POST "http://localhost:8000/public/create_leads" \
   -F "resume=@resume.pdf"
 ```
 
-**响应**:
+**Response**:
 ```json
 {
   "id": 1,
@@ -132,146 +132,146 @@ curl -X POST "http://localhost:8000/public/create_leads" \
 }
 ```
 
-#### 更新Lead
+#### Update Lead
 - **PUT** `/public/update_leads/{lead_id}`
-- **描述**: 更新现有lead的信息
-- **参数**: `lead_id` (integer, path)
-- **请求体**: `multipart/form-data`
-  - `first_name` (string, optional): 名
-  - `last_name` (string, optional): 姓
-  - `resume` (file, optional): 新简历文件
+- **Description**: Update existing lead information
+- **Parameter**: `lead_id` (integer, path)
+- **Request Body**: `multipart/form-data`
+  - `first_name` (string, optional): First name
+  - `last_name` (string, optional): Last name
+  - `resume` (file, optional): New resume file
 
-### 内部接口 (Internal APIs)
+### Internal APIs
 
-#### 获取所有Leads
+#### Get All Leads
 - **GET** `/internal/leads`
-- **参数**:
-  - `skip` (integer, query, default=0): 跳过的记录数
-  - `limit` (integer, query, default=100): 返回的最大记录数
+- **Parameters**:
+  - `skip` (integer, query, default=0): Number of records to skip
+  - `limit` (integer, query, default=100): Maximum records to return
 
-#### 获取单个Lead
+#### Get Single Lead
 - **GET** `/internal/leads/{lead_id}`
-- **参数**: `lead_id` (integer, path)
+- **Parameter**: `lead_id` (integer, path)
 
-#### 更新Lead状态
+#### Update Lead Status
 - **PATCH** `/internal/leads/{lead_id}/state`
-- **描述**: 更新lead的跟进状态
-- **请求体**:
+- **Description**: Update lead follow-up status
+- **Request Body**:
 ```json
 {
   "state": "REACHED_OUT"
 }
 ```
 
-**可用状态**: `PENDING`, `REACHED_OUT`
+**Available States**: `PENDING`, `REACHED_OUT`
 
-#### 删除Lead
+#### Delete Lead
 - **DELETE** `/internal/leads/{lead_id}`
-- **描述**: 删除指定的lead记录
+- **Description**: Delete specified lead record
 
-## 🗂️ 项目结构
+## 🗂️ Project Structure
 
 ```
 fastapi-leads/
 ├── app/
-│   ├── api/           # API路由定义
-│   │   ├── public.py  # 公开接口
-│   │   └── internal.py # 内部接口
-│   ├── core/          # 核心配置
-│   │   └── config.py  # 应用配置
-│   ├── models/        # 数据模型
-│   │   ├── models.py  # SQLAlchemy模型
-│   │   ├── schemas.py # Pydantic模式
-│   │   └── enums.py   # 枚举定义
-│   ├── services/      # 业务服务层
-│   │   ├── email_service.py    # 邮件服务
-│   │   └── storage_service.py  # 文件存储服务
-│   ├── server/        # 数据访问层
-│   │   └── lead_dao.py # Lead数据访问对象
-│   └── database/      # 数据库配置
+│   ├── api/           # API route definitions
+│   │   ├── public.py  # Public interfaces
+│   │   └── internal.py # Internal interfaces
+│   ├── core/          # Core configuration
+│   │   └── config.py  # Application configuration
+│   ├── models/        # Data models
+│   │   ├── models.py  # SQLAlchemy models
+│   │   ├── schemas.py # Pydantic schemas
+│   │   └── enums.py   # Enum definitions
+│   ├── services/      # Business services layer
+│   │   ├── email_service.py    # Email service
+│   │   └── storage_service.py  # File storage service
+│   ├── server/        # Data access layer
+│   │   └── lead_dao.py # Lead data access object
+│   └── database/      # Database configuration
 │       └── db.py
-├── uploads/           # 文件上传目录
-├── alembic/           # 数据库迁移 (可选)
-├── .env              # 环境变量配置
-├── .gitignore        # Git忽略文件
-├── main.py           # 应用入口
-├── requirements.txt  # Python依赖
-├── run.sh           # 启动脚本
-└── README.md        # 项目文档
+├── uploads/           # File upload directory
+├── alembic/           # Database migrations (optional)
+├── .env              # Environment variables configuration
+├── .gitignore        # Git ignore file
+├── main.py           # Application entry point
+├── requirements.txt  # Python dependencies
+├── run.sh           # Startup script
+└── README.md        # Project documentation
 ```
 
-## ⚙️ 配置选项
+## ⚙️ Configuration Options
 
-### 必需配置
+### Required Configuration
 
-| 变量 | 默认值 | 描述 |
-|------|--------|------|
-| `DATABASE_URL` | `sqlite:///leads.db` | 数据库连接URL |
-| `UPLOAD_DIR` | `./uploads` | 文件上传目录 |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DATABASE_URL` | `sqlite:///leads.db` | Database connection URL |
+| `UPLOAD_DIR` | `./uploads` | File upload directory |
 
-### 可选配置
+### Optional Configuration
 
-| 变量 | 默认值 | 描述 |
-|------|--------|------|
-| `SMTP_HOST` | - | SMTP服务器主机 |
-| `SMTP_PORT` | - | SMTP服务器端口 |
-| `SMTP_USER` | - | SMTP用户名 |
-| `SMTP_PASSWORD` | - | SMTP密码 |
-| `FROM_EMAIL` | - | 发件人邮箱 |
-| `ATTORNEY_EMAIL` | - | 律师邮箱 (接收内部通知) |
-| `LOG_LEVEL` | `INFO` | 日志级别 |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `SMTP_HOST` | - | SMTP server host |
+| `SMTP_PORT` | - | SMTP server port |
+| `SMTP_USER` | - | SMTP username |
+| `SMTP_PASSWORD` | - | SMTP password |
+| `FROM_EMAIL` | - | Sender email address |
+| `ATTORNEY_EMAIL` | - | Attorney email (receives internal notifications) |
+| `LOG_LEVEL` | `INFO` | Logging level |
 
-## 📧 邮件通知系统
+## 📧 Email Notification System
 
-当创建新lead时，系统会自动发送两封邮件：
+When creating a new lead, the system automatically sends two emails:
 
-1. **客户确认邮件**: 发送给lead本人，确认收到申请
-2. **内部通知邮件**: 发送给配置的律师邮箱，包含lead详细信息
+1. **Customer Confirmation Email**: Sent to the lead confirming receipt of their application
+2. **Internal Notification Email**: Sent to the configured attorney email with lead details
 
-邮件功能需要完整的SMTP配置才会启用。
+Email functionality requires complete SMTP configuration to be enabled.
 
-## 🔧 开发指南
+## 🔧 Development Guide
 
-### 运行测试
+### Run Tests
 
 ```bash
-# 安装测试依赖
+# Install test dependencies
 pip install pytest
 
-# 运行测试
+# Run tests
 pytest
 ```
 
-### 数据库迁移 (使用Alembic)
+### Database Migration (using Alembic)
 
 ```bash
-# 初始化迁移
+# Initialize migrations
 alembic init alembic
 
-# 创建迁移
+# Create migration
 alembic revision --autogenerate -m "Initial migration"
 
-# 应用迁移
+# Apply migration
 alembic upgrade head
 ```
 
-### 代码格式化
+### Code Formatting
 
 ```bash
-# 安装开发依赖
+# Install development dependencies
 pip install black isort flake8
 
-# 格式化代码
+# Format code
 black .
 isort .
 
-# 检查代码质量
+# Check code quality
 flake8 .
 ```
 
-## 🚀 部署
+## 🚀 Deployment
 
-### 使用Docker
+### Using Docker
 
 ```dockerfile
 FROM python:3.11-slim
@@ -286,64 +286,64 @@ EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-### 生产环境配置
+### Production Environment Configuration
 
 ```bash
-# 使用生产WSGI服务器
+# Use production WSGI server
 pip install gunicorn
 gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
 ```
 
-## 🔍 故障排除
+## 🔍 Troubleshooting
 
-### 常见问题
+### Common Issues
 
-1. **数据库连接错误**
-   - 检查 `DATABASE_URL` 配置
-   - 确保数据库文件存在且有写权限
+1. **Database Connection Error**
+   - Check `DATABASE_URL` configuration
+   - Ensure database file exists and has write permissions
 
-2. **文件上传失败**
-   - 检查 `UPLOAD_DIR` 目录存在且有写权限
-   - 验证文件大小限制
+2. **File Upload Failure**
+   - Check `UPLOAD_DIR` directory exists and has write permissions
+   - Verify file size limits
 
-3. **邮件发送失败**
-   - 检查SMTP配置完整性
-   - 验证邮箱凭据和服务器设置
+3. **Email Sending Failure**
+   - Check SMTP configuration completeness
+   - Verify email credentials and server settings
 
-4. **端口占用**
+4. **Port Already in Use**
    ```bash
-   # 查找占用8000端口的进程
+   # Find process using port 8000
    lsof -i :8000
-   # 或使用不同端口
+   # Or use different port
    uvicorn app.main:app --port 8001
    ```
 
-## 🤝 贡献指南
+## 🤝 Contributing Guidelines
 
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
+1. Fork this repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Create Pull Request
 
-### 代码规范
+### Code Standards
 
-- 使用 `black` 进行代码格式化
-- 使用 `isort` 整理导入语句
-- 遵循PEP 8 规范
-- 为新功能添加适当的测试
+- Use `black` for code formatting
+- Use `isort` to organize imports
+- Follow PEP 8 standards
+- Add appropriate tests for new features
 
-## 📄 许可证
+## 📄 License
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
 
-## 📞 支持
+## 📞 Support
 
-如有问题或建议，请：
+For questions or suggestions, please:
 
-- 提交 [GitHub Issue](https://github.com/Rikiz/alma-backend-project/issues)
-- 查看 [API 文档](http://localhost:8000/docs) (运行服务后)
-- 查看 [交互式API文档](http://localhost:8000/redoc) (运行服务后)
+- Submit [GitHub Issue](https://github.com/Rikiz/alma-backend-project/issues)
+- View [API Documentation](http://localhost:8000/docs) (after running the service)
+- View [Interactive API Documentation](http://localhost:8000/redoc) (after running the service)
 
 ---
 
