@@ -30,7 +30,7 @@
 
 ## 📋 系统要求
 
-- Python 3.8+
+- Python 3.11+
 - SQLite 3.0+ (默认) 或 PostgreSQL (可选)
 
 ## 🚀 快速开始
@@ -45,7 +45,7 @@ cd fastapi-leads
 ### 2. 创建conda环境
 
 ```bash
-conda create -n fastapi-leads python=3.8
+conda create -n fastapi-leads python=3.11
 conda activate fastapi-leads
 ```
 

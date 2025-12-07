@@ -1,6 +1,6 @@
 # FastAPI Leads Service
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115.6-green.svg)](https://fastapi.tiangolo.com/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0+-red.svg)](https://www.sqlalchemy.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -30,7 +30,7 @@ A modern leads (prospects) management system built with FastAPI, supporting resu
 
 ## 📋 System Requirements
 
-- Python 3.8+
+- Python 3.11+
 - SQLite 3.0+ (default) or PostgreSQL (optional)
 
 ## 🚀 Quick Start
@@ -45,7 +45,7 @@ cd fastapi-leads
 ### 2. Create conda environment
 
 ```bash
-conda create -n fastapi-leads python=3.8
+conda create -n fastapi-leads python=3.11
 conda activate fastapi-leads
 ```
 
