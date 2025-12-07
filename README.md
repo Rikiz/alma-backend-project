@@ -39,7 +39,7 @@ A modern leads (prospects) management system built with FastAPI, supporting resu
 
 ```bash
 git clone https://github.com/Rikiz/alma-backend-project.git
-cd fastapi-leads
+cd alma-backend-project
 ```
 
 ### 2. Create conda environment
@@ -82,7 +82,7 @@ LOG_LEVEL=INFO
 
 ```bash
 # Development mode (with hot reload)
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 # Or use the convenience script
 ./run.sh

@@ -39,7 +39,7 @@
 
 ```bash
 git clone https://github.com/Rikiz/alma-backend-project.git
-cd fastapi-leads
+cd alma-backend-project
 ```
 
 ### 2. 创建conda环境
@@ -82,7 +82,7 @@ LOG_LEVEL=INFO
 
 ```bash
 # 开发模式 (带热重载)
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 # 或使用便捷脚本
 ./run.sh
